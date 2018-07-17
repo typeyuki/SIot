@@ -1,0 +1,21 @@
+javaScript浮点数比较注意
+1/3 === (1-2/3);//false
+浮点数在运算过程中会产生误差，计算机无法精确表示无线循环小数。
+要比较两个浮点数是否相同只能计算他们之差的绝对值，看是否小于某一个阈值
+
+Math.abs(1/3-(1-2/3))<0.00000001;//true
+
+JavaScrit的数组非常有意思，
+首先数组Array可以包含任意数据类型，而且如果修改Array的长度属性length赋一个新值也会导致Array大小的变化：
+
+var arr = [1,2,3];
+arr.length;//3
+arr.length = 6;
+arr;//arr变为[1,2,3,undefined,undefined,undefined]
+arr.length = 2;
+arr;//arr变为[1,2]
+
+JavaScript的随意性很强，生成对象和数组之后，可以直接对其进行改动。寻找一个不存的属性或是删除一个
+不存在的属性都不会报错，只是会返回undefined
+
+JavaScript把null,undefined,0,NaN和空字符串''视为false，其他一概视为true
